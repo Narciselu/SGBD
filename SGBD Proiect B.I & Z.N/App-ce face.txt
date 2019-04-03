@@ -1,0 +1,24 @@
+1. Mistria este o aplicatie de calatorii (O agentie) care ajuta Utilizatorul sa isi planifice vacantele/calatoriile.
+2. Utilizatorul nu poate sa isi planifice vacanta daca nu este logat. Crearea contului va contine Numele, Prenumele, email-ul 
+   si parola. Dupa crearea contului acesta se va putea loga in aplicatie introducand email-ul si parola.
+3. Dupa logare acesta va putea sa isi planifice vacantele. Acesta va trebui sa isi aleaga data de Check-in dar si data ce Check-out.
+   Va selecta mai apoi Continentul de plecare dar si de sosire, Tara de plecare si sosire, Orasul de plecare unde aeroport dar si 
+   de sosire unde e aeroport. Apoi se va selecta orasul in care va vrea sa se cazeze si mai apoi Hotelul. Ni se va genera o lista cu 
+   orase de vizitat in ordinea notelor oferite de alti utilizatori dar va fi facut un calcul in functie de nota si numarul celor
+   care viziteaza (Nota_FINALA=(Suma)(de la 1 la n(n reprezinta utilizatorii))din((NotaFinalaUtilizator)=(Nota*2+NrP*0.02)/100)).
+   Se va genera apoi un numar de rute in functie de coordonatele oraselor si vor fi rute mai scurte/lungi/scumpe/ieftine, generate
+   de avioane deoarece fiecare avion are o distanta maxima de zbor si e posibil ca pentru anumite locatii sa fie nevoie de +2 zboruri.
+   Se va putea selecta clasa in care se va sta in avion. Se va calcula apoi un pret final in functie de zbor(dus/intors) + pretul
+   la Hotel care va fi pretul pe noapte *(inmultit) cu cate nopti se va sta *(inmultit) cu numarul de persoane.
+   Fiecare companie va calcula pentru fiecare avion combustibilul + vor adauga preturi pentru a iesi pe plus si acest lucru
+   va influenta pretul/persoana. Fiecare clasa din avion va plati preturi diferite. 
+4. Utilizatorul va confirma mai apoi daca ii convine tot ceea ce a ales, poate reseta ce a selectat si sa o ia de la capat daca
+   nu apasa confirm. 
+5. Utilizatorul se poate duce in Istoric pentru a vedea unde a fost si mai apoi vota cum i s-a parut zborul, hotelul la care a stat
+   si locatiile vizitate. 
+6. Utilizatorului i se vor afisa notele zborurilor, hotelurilor si locatiilor pentru a stii ce sa aleaga.
+7. Utilizatorul poate sa intre in Account Settings si sa isi schimbe email-ul si parola.
+8. Dupa ce si-a terminat treaba se poate deloga. 
+    
+Export - Backup Tabele
+   
