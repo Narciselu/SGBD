@@ -34,13 +34,11 @@ import javafx.stage.Stage;
  * @author narci
  */
 public class AfterloginmainController implements Initializable 
-
 {
-
-    @FXML
-
-    private BorderPane borderpane1;
     private Connection con;
+    
+    @FXML
+    private BorderPane borderpane1;
     @FXML
     private ComboBox<String> departureContinent;
     @FXML
@@ -70,7 +68,7 @@ public class AfterloginmainController implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-         try {
+        try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
@@ -155,14 +153,14 @@ public class AfterloginmainController implements Initializable
         departureContinent.getItems().clear();
         
         Statement statement;
-        String query = "select * from continents order by name";
+        String query = "select c.name as name from continents c order by c.name";
         
 
         try {
             statement = con.createStatement();
             ResultSet result = statement.executeQuery(query);
             while(result.next()) {
-                System.out.println(result.getString("name"));
+//                System.out.println(result.getString("name"));
                 departureContinent.getItems().add(result.getString("name"));
             }
         } catch (SQLException e) {
@@ -179,14 +177,14 @@ public class AfterloginmainController implements Initializable
         arrivalContinent.getItems().clear();
         
         Statement statement;
-        String query = "select * from continents order by name";
+        String query = "select c.name as name from continents c order by c.name";
         
 
         try {
             statement = con.createStatement();
             ResultSet result = statement.executeQuery(query);
             while(result.next()) {
-                System.out.println(result.getString("name"));
+//                System.out.println(result.getString("name"));
                 arrivalContinent.getItems().add(result.getString("name"));
             }
         } catch (SQLException e) {
@@ -199,21 +197,21 @@ public class AfterloginmainController implements Initializable
     private void departureCountry(MouseEvent event) 
     {
         
-         departureCountry.getItems().clear();
+        departureCountry.getItems().clear();
         
-         if(departureContinent.getSelectionModel().getSelectedItem()== null)
+        if(departureContinent.getSelectionModel().getSelectedItem()== null)
              return;
-         
-        Statement statement;
-        String query = "select * from countries where continent = \'" + departureContinent.getSelectionModel().getSelectedItem() + "\' order by name";
         
-        System.out.println (query);
+        Statement statement;
+        String query = "select c.name as name from countries c where c.continent = \'" + departureContinent.getSelectionModel().getSelectedItem() + "\' order by name";
+        
+//        System.out.println (query);
 
         try {
             statement = con.createStatement();
             ResultSet result = statement.executeQuery(query);
             while(result.next()) {
-                System.out.println(result.getString("name"));
+//                System.out.println(result.getString("name"));
                 departureCountry.getItems().add(result.getString("name"));
             }
         } catch (SQLException e) {
@@ -231,15 +229,15 @@ public class AfterloginmainController implements Initializable
              return;
         
         Statement statement;
-        String query = "select * from countries where continent = \'" + arrivalContinent.getSelectionModel().getSelectedItem() + "\' order by name";
+        String query = "select c.name as name from countries c where c.continent = \'" + arrivalContinent.getSelectionModel().getSelectedItem() + "\' order by name";
         
-        System.out.println (query);
+//        System.out.println (query);
 
         try {
             statement = con.createStatement();
             ResultSet result = statement.executeQuery(query);
             while(result.next()) {
-                System.out.println(result.getString("name"));
+//                System.out.println(result.getString("name"));
                 arrivalCountry.getItems().add(result.getString("name"));
             }
         } catch (SQLException e) {
@@ -257,15 +255,15 @@ public class AfterloginmainController implements Initializable
              return;
         
         Statement statement;
-        String query = "select * from cities where country = \'" + departureCountry.getSelectionModel().getSelectedItem() + "\' order by name";
+        String query = "select c.name as name from cities c join airports a on c.name = a.city where c.country = \'" + departureCountry.getSelectionModel().getSelectedItem() + "\' order by name";
         
-        System.out.println (query);
+//        System.out.println (query);
 
         try {
             statement = con.createStatement();
             ResultSet result = statement.executeQuery(query);
             while(result.next()) {
-                System.out.println(result.getString("name"));
+//                System.out.println(result.getString("name"));
                 departureCity.getItems().add(result.getString("name"));
             }
         } catch (SQLException e) {
@@ -285,13 +283,13 @@ public class AfterloginmainController implements Initializable
         Statement statement;
         String query = "select distinct c.name as name from cities c join airports a on c.name = a.city where country = \'" + arrivalCountry.getSelectionModel().getSelectedItem() + "\' order by name";
         
-        System.out.println (query);
+//        System.out.println (query);
 
         try {
             statement = con.createStatement();
             ResultSet result = statement.executeQuery(query);
             while(result.next()) {
-                System.out.println(result.getString("name"));
+//                System.out.println(result.getString("name"));
                 arrivalCity.getItems().add(result.getString("name"));
             }
         } catch (SQLException e) {
@@ -308,22 +306,26 @@ public class AfterloginmainController implements Initializable
         if(departureCity.getSelectionModel().getSelectedItem()== null)
              return;
         
-        Statement statement;
-        String query = "select * from airports where city = \'" + departureCity.getSelectionModel().getSelectedItem() + "\' order by name";
+        System.out.println(departureAirport.getVisibleRowCount());
         
-        System.out.println (query);
+        Statement statement;
+        String query = "select a.name as name from airports a where a.city = \'" + departureCity.getSelectionModel().getSelectedItem() + "\' order by name";
+        
+//        System.out.println (query);
 
         try {
             statement = con.createStatement();
             ResultSet result = statement.executeQuery(query);
-            //int i = 0;
             while(result.next()) {
-                System.out.println(result.getString("name"));
+//                System.out.println(result.getString("name"));
                 departureAirport.getItems().add(result.getString("name"));
-                //i++;
             }
             
-                    //departureAirport.setVisibleRowCount(Math.min(10,i));
+            departureAirport.hide();
+            departureAirport.setVisibleRowCount(Math.min(10, departureAirport.getItems().size()));
+//            departureAirport.setVisibleRowCount(20);
+            System.out.println(departureAirport.visibleRowCountProperty());
+            departureAirport.show();
             
         } catch (SQLException e) {
             e.printStackTrace();
@@ -343,16 +345,16 @@ public class AfterloginmainController implements Initializable
              return;
         
         Statement statement;
-        String query = "select * from airports where city = \'" + arrivalCity.getSelectionModel().getSelectedItem() + "\' order by name";
+        String query = "select a.name as name from airports a where a.city = \'" + arrivalCity.getSelectionModel().getSelectedItem() + "\' order by name";
         
-        System.out.println (query);
+//        System.out.println (query);
 
         try {
             statement = con.createStatement();
             ResultSet result = statement.executeQuery(query);
             //int i = 0;
             while(result.next()) {
-                System.out.println(result.getString("name"));
+//                System.out.println(result.getString("name"));
                 arrivalAirport.getItems().add(result.getString("name"));
                 //i++;
             }
@@ -374,15 +376,15 @@ public class AfterloginmainController implements Initializable
              return;
         
         Statement statement;
-        String query = "select * from cities where country = \'" + arrivalCountry.getSelectionModel().getSelectedItem() + "\' order by name";
+        String query = "select c.name as name from cities c where c.country = \'" + arrivalCountry.getSelectionModel().getSelectedItem() + "\' order by name";
         
-        System.out.println (query);
+//        System.out.println (query);
 
         try {
             statement = con.createStatement();
             ResultSet result = statement.executeQuery(query);
             while(result.next()) {
-                System.out.println(result.getString("name"));
+//                System.out.println(result.getString("name"));
                 holidayCity.getItems().add(result.getString("name"));
             }
         } catch (SQLException e) {
@@ -400,15 +402,15 @@ public class AfterloginmainController implements Initializable
              return;
         
         Statement statement;
-        String query = "select * from hotels where country = \'" + holidayCity.getSelectionModel().getSelectedItem() + "\' order by name";
+        String query = "select h.name as name from hotels h where h.country = \'" + holidayCity.getSelectionModel().getSelectedItem() + "\' order by name";
         
-        System.out.println (query);
+//        System.out.println (query);
 
         try {
             statement = con.createStatement();
             ResultSet result = statement.executeQuery(query);
             while(result.next()) {
-                System.out.println(result.getString("name"));
+//                System.out.println(result.getString("name"));
                 hotel.getItems().add(result.getString("name"));
             }
         } catch (SQLException e) {
@@ -426,15 +428,15 @@ public class AfterloginmainController implements Initializable
              return;
         
         Statement statement;
-        String query = "select * from cities where country = \'" + arrivalCountry.getSelectionModel().getSelectedItem() + "\' order by name";
+        String query = "select c.name as name from cities c where c.country = \'" + arrivalCountry.getSelectionModel().getSelectedItem() + "\' order by name";
         
-        System.out.println (query);
+//        System.out.println (query);
 
         try {
             statement = con.createStatement();
             ResultSet result = statement.executeQuery(query);
             while(result.next()) {
-                System.out.println(result.getString("name"));
+//                System.out.println(result.getString("name"));
                 citiesVisit.getItems().add(result.getString("name"));
             }
         } catch (SQLException e) {

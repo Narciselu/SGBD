@@ -6,7 +6,10 @@
 package mistria;
 
 import java.io.IOException;
+import java.math.BigInteger;
 import java.net.URL;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -21,12 +24,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 
 /**
@@ -35,7 +41,8 @@ import javafx.stage.Stage;
  */
 public class MistriaMainController implements Initializable
 {
-
+    private Connection con;
+    
     @FXML
     private TextField username;
     @FXML
@@ -47,6 +54,21 @@ public class MistriaMainController implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {
+        try {
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+            return;
+        }
+        
+        try {
+            con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "mistria", "mistria");
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return;
+        }
+        
+//        System.out.println("Connected to SQL");
         // TODO
     }    
 
@@ -58,7 +80,7 @@ public class MistriaMainController implements Initializable
     }
 
     @FXML
-    private void registerpage(ActionEvent event) 
+    private void registerpage(ActionEvent event)
     {
         try 
         {
@@ -89,4 +111,22 @@ public class MistriaMainController implements Initializable
         borderpane.setCenter(root);
     }
     
+    private String hashPassword(String password) {
+        try {
+            MessageDigest msgDigest = MessageDigest.getInstance("MD5");
+            msgDigest.reset();
+            BigInteger bigInt = new BigInteger(1, msgDigest.digest());
+            return bigInt.toString(16);
+        } catch (NoSuchAlgorithmException ex) {
+             System.out.println(ex.getMessage());
+        }
+        
+        return null;
+    }
+    
+    private void showError(String err){
+        Alert alert = new Alert(Alert.AlertType.ERROR, err, ButtonType.OK);
+            alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
+            alert.show();
+    }
 }
