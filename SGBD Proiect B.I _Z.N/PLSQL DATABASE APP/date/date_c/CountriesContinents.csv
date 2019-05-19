@@ -1,0 +1,207 @@
+1,Europe,Albania,Europe
+1,Europe,Andorra,Europe
+1,Europe,Armenia,Europe
+1,Europe,Austria,Europe
+1,Europe,Azerbaijan,Europe
+1,Europe,Belarus,Europe
+1,Europe,Belgium,Europe
+1,Europe,Bosnia and Herzegovina,Europe
+1,Europe,Bulgaria,Europe
+1,Europe,Croatia,Europe
+1,Europe,Cyprus,Europe
+1,Europe,Czechia,Europe
+1,Europe,Denmark,Europe
+1,Europe,Estonia,Europe
+1,Europe,Finland,Europe
+1,Europe,France,Europe
+1,Europe,Georgia,Europe
+1,Europe,Germany,Europe
+1,Europe,Greece,Europe
+1,Europe,Hungary,Europe
+1,Europe,Iceland,Europe
+1,Europe,Ireland,Europe
+1,Europe,Italy,Europe
+1,Europe,Kazakhstan,Europe
+1,Europe,Kosovo,Europe
+1,Europe,Latvia,Europe
+1,Europe,Liechtenstein,Europe
+1,Europe,Lithuania,Europe
+1,Europe,Luxembourg,Europe
+1,Europe,Malta,Europe
+1,Europe,Moldova,Europe
+1,Europe,Monaco,Europe
+1,Europe,Montenegro,Europe
+1,Europe,Netherlands,Europe
+1,Europe,North Macedonia ,Europe
+1,Europe,Norway,Europe
+1,Europe,Poland,Europe
+1,Europe,Portugal,Europe
+1,Europe,Romania,Europe
+1,Europe,Russia,Europe
+1,Europe,San Marino,Europe
+1,Europe,Serbia,Europe
+1,Europe,Slovakia,Europe
+1,Europe,Slovenia,Europe
+1,Europe,Spain,Europe
+1,Europe,Sweden,Europe
+1,Europe,Switzerland,Europe
+1,Europe,Turkey,Europe
+1,Europe,Ukraine,Europe
+1,Europe,United Kingdom ,Europe
+1,Europe,Vatican City ,Europe
+5,Asia,Afghanistan,Asia
+5,Asia,Armenia,Asia
+5,Asia,Azerbaijan,Asia
+5,Asia,Bahrain,Asia
+5,Asia,Bangladesh,Asia
+5,Asia,Bhutan,Asia
+5,Asia,Brunei,Asia
+5,Asia,Burma,Asia
+5,Asia,Cambodia,Asia
+5,Asia,China,Asia
+5,Asia,Cyprus,Asia
+5,Asia,Georgia,Asia
+5,Asia,Hong Kong,Asia
+5,Asia,India,Asia
+5,Asia,Indonesia,Asia
+5,Asia,Iran,Asia
+5,Asia,Iraq,Asia
+5,Asia,Israel,Asia
+5,Asia,Japan,Asia
+5,Asia,Jordan,Asia
+5,Asia,Kazakhstan,Asia
+5,Asia,"Korea, North",Asia
+5,Asia,"Korea, South",Asia
+5,Asia,Kuwait,Asia
+5,Asia,Kyrgyzstan,Asia
+5,Asia,Laos,Asia
+5,Asia,Lebanon,Asia
+5,Asia,Macau,Asia
+5,Asia,Malaysia,Asia
+5,Asia,Maldives,Asia
+5,Asia,Mongolia,Asia
+5,Asia,Nepal,Asia
+5,Asia,Oman,Asia
+5,Asia,Pakistan,Asia
+5,Asia,Palestine,Asia
+5,Asia,Philippines,Asia
+5,Asia,Qatar,Asia
+5,Asia,Saudi Arabia,Asia
+5,Asia,Singapore,Asia
+5,Asia,Sri Lanka,Asia
+5,Asia,Syria,Asia
+5,Asia,Taiwan,Asia
+5,Asia,Tajikistan,Asia
+5,Asia,Thailand,Asia
+5,Asia,Turkey,Asia
+5,Asia,Turkmenistan,Asia
+5,Asia,United Arab Emirates,Asia
+5,Asia,Uzbekistan,Asia
+5,Asia,Vietnam,Asia
+5,Asia,Yemen,Asia
+6,Africa,Algeria,Africa
+6,Africa,Angola,Africa
+6,Africa,Benin,Africa
+6,Africa,Botswana,Africa
+6,Africa,Burkina Faso,Africa
+6,Africa,Burundi,Africa
+6,Africa,Cameroon,Africa
+6,Africa,Cape Verde,Africa
+6,Africa,Central African Republic,Africa
+6,Africa,Chad,Africa
+6,Africa,Comoros,Africa
+6,Africa,"Congo, Democratic Republic of the",Africa
+6,Africa,"Congo, Republic of the",Africa
+6,Africa,Cote d'Ivoire,Africa
+6,Africa,Djibouti,Africa
+6,Africa,Egypt,Africa
+6,Africa,Equatorial Guinea,Africa
+6,Africa,Eritrea,Africa
+6,Africa,Ethiopia,Africa
+6,Africa,Gabon,Africa
+6,Africa,Gambia,Africa
+6,Africa,Ghana,Africa
+6,Africa,Guinea,Africa
+6,Africa,Guinea-Bissau,Africa
+6,Africa,Kenya,Africa
+6,Africa,Lesotho,Africa
+6,Africa,Liberia,Africa
+6,Africa,Libya,Africa
+6,Africa,Madagascar,Africa
+6,Africa,Malawi,Africa
+6,Africa,Mali,Africa
+6,Africa,Mauritania,Africa
+6,Africa,Mauritius,Africa
+6,Africa,Morocco,Africa
+6,Africa,Mozambique,Africa
+6,Africa,Namibia,Africa
+6,Africa,Niger,Africa
+6,Africa,Nigeria,Africa
+6,Africa,Rwanda,Africa
+6,Africa,Sao Tome and Principe,Africa
+6,Africa,Senegal,Africa
+6,Africa,Seychelles,Africa
+6,Africa,Sierra Leone,Africa
+6,Africa,Somalia,Africa
+6,Africa,South Africa,Africa
+6,Africa,Sudan,Africa
+6,Africa,Swaziland,Africa
+6,Africa,Tanzania,Africa
+6,Africa,Togo,Africa
+6,Africa,Tunisia,Africa
+6,Africa,Uganda,Africa
+6,Africa,Zambia,Africa
+6,Africa,Zimbabwe,Africa
+4,Australia,Australia,Australia
+5,Asia,Bahrain,Asia
+5,Asia,Cyprus,Asia
+5,Asia,Egypt,Asia
+5,Asia,Iran,Asia
+5,Asia,Iraq,Asia
+5,Asia,Israel,Asia
+5,Asia,Jordan,Asia
+5,Asia,Kuwait,Asia
+5,Asia,Lebanon,Asia
+5,Asia,Oman,Asia
+5,Asia,Qatar,Asia
+5,Asia,Saudi Arabia,Asia
+5,Asia,Syria,Asia
+5,Asia,Turkey,Asia
+5,Asia,United Arab Emirates,Asia
+5,Asia,Yemen,Asia
+2,North America,Antigua and Barbuda,North America
+2,North America,Bahamas,North America
+2,North America,Barbados,North America
+2,North America,Belize,North America
+2,North America,Bermuda,North America
+2,North America,Canada,North America
+2,North America,Costa Rica,North America
+2,North America,Cuba,North America
+2,North America,Dominica,North America
+2,North America,Dominican Republic,North America
+2,North America,El Salvador,North America
+2,North America,Grenada,North America
+2,North America,Guatemala,North America
+2,North America,Haiti,North America
+2,North America,Honduras,North America
+2,North America,Jamaica,North America
+2,North America,Mexico,North America
+2,North America,Nicaragua,North America
+2,North America,Panama,North America
+2,North America,St. Kitts and Nevis,North America
+2,North America,St. Lucia,North America
+2,North America,St. Vincent and The Grenadines,North America
+2,North America,Trinidad and Tobago,North America
+2,North America,United States,North America
+3,South America,Argentina,South America
+3,South America,Bolivia,South America
+3,South America,Brazil,South America
+3,South America,Chile,South America
+3,South America,Colombia,South America
+3,South America,Ecuador,South America
+3,South America,Guyana,South America
+3,South America,Paraguay,South America
+3,South America,Peru,South America
+3,South America,Suriname,South America
+3,South America,Uruguay,South America
+3,South America,Venezuela,South America
