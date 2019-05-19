@@ -12,6 +12,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -42,6 +43,7 @@ import javafx.stage.Stage;
 public class MistriaMainController implements Initializable
 {
     private Connection con;
+    private UserInfo userInfo;
     
     @FXML
     private TextField username;
@@ -75,8 +77,36 @@ public class MistriaMainController implements Initializable
     @FXML
     private void login(MouseEvent event) 
     {
+        String email = this.username.getText();
+        String password = this.password.getText();
         
-        loadUI("afterloginmain");
+        if(email.length() == 0 || password.length() == 0) {
+            showError("Username and password required");
+            return;
+        }
+        
+        if(!email.matches("^([A-Za-z0-9\\.\\-\\_]+)@([A-Za-z]+)\\.([A-Za-z]+)$")){
+            showError("Invalid email");
+            return;
+        }
+        
+        password = hashPassword(password);
+        
+        try {
+            PreparedStatement prepStmt = con.prepareStatement("select first_name, last_name from customers where email = ? and password = ?");
+            prepStmt.setString(1, email);
+            prepStmt.setString(2, password);
+            ResultSet res = prepStmt.executeQuery();
+            if(res.next()){
+                userInfo = new UserInfo(email, res.getString("first_name"), res.getString("last_name"));
+                loadUI("afterloginmain");
+            }
+            else
+                showError("Invalid email or password");
+        } catch (SQLException ex) {
+            showError(ex.getMessage());
+            System.out.println(ex.getMessage());
+        }
     }
 
     @FXML
@@ -102,7 +132,10 @@ public class MistriaMainController implements Initializable
         Parent root = null;
         try
         {
-            root = FXMLLoader.load(getClass().getResource(ui+".fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(ui+".fxml"));
+            root = loader.load();
+            AfterloginmainController controller = loader.getController();
+            controller.transmitUserInfo(userInfo);
         }
         catch(IOException ex)
         {
@@ -126,7 +159,7 @@ public class MistriaMainController implements Initializable
     
     private void showError(String err){
         Alert alert = new Alert(Alert.AlertType.ERROR, err, ButtonType.OK);
-            alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
-            alert.show();
+        alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
+        alert.show();
     }
 }

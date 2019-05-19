@@ -28,6 +28,7 @@ import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javax.swing.SpinnerNumberModel;
 
@@ -38,6 +39,12 @@ import javax.swing.SpinnerNumberModel;
  */
 public class AfterloginmainController implements Initializable 
 {
+
+    @FXML
+    private Text username;
+       
+    private UserInfo userInfo;
+    
     private Connection con;
     
     @FXML
@@ -178,9 +185,9 @@ public class AfterloginmainController implements Initializable
                 departureContinent.getItems().add(result.getString("name"));
             }
             
-                  departureContinent.hide();
-                  departureContinent.setVisibleRowCount(Math.min(10 , departureContinent.getItems().size()));
-                  departureContinent.show();
+            departureContinent.hide();
+            departureContinent.setVisibleRowCount(Math.min(10 , departureContinent.getItems().size()));
+            departureContinent.show();
             
         } catch (SQLException e) {
             e.printStackTrace();
@@ -207,9 +214,10 @@ public class AfterloginmainController implements Initializable
                 arrivalContinent.getItems().add(result.getString("name"));
             }
             
-                  arrivalContinent.hide();
-                  arrivalContinent.setVisibleRowCount(Math.min(10 , arrivalContinent.getItems().size()));
-                  arrivalContinent.show();
+            arrivalContinent.hide();
+            arrivalContinent.setVisibleRowCount(Math.min(10 , arrivalContinent.getItems().size()));
+            arrivalContinent.show();
+            
         } catch (SQLException e) {
             e.printStackTrace();
             return;
@@ -238,9 +246,9 @@ public class AfterloginmainController implements Initializable
                 departureCountry.getItems().add(result.getString("name"));
             }
             
-                  departureCountry.hide();
-                  departureCountry.setVisibleRowCount(Math.min(10 , departureCountry.getItems().size()));
-                  departureCountry.show();
+            departureCountry.hide();
+            departureCountry.setVisibleRowCount(Math.min(10 , departureCountry.getItems().size()));
+            departureCountry.show();
             
         } catch (SQLException e) {
             e.printStackTrace();
@@ -269,9 +277,9 @@ public class AfterloginmainController implements Initializable
                 arrivalCountry.getItems().add(result.getString("name"));
             }
             
-                  arrivalCountry.hide();
-                  arrivalCountry.setVisibleRowCount(Math.min(10 , arrivalCountry.getItems().size()));
-                  arrivalCountry.show();
+            arrivalCountry.hide();
+            arrivalCountry.setVisibleRowCount(Math.min(10 , arrivalCountry.getItems().size()));
+            arrivalCountry.show();
             
         } catch (SQLException e) {
             e.printStackTrace();
@@ -300,9 +308,9 @@ public class AfterloginmainController implements Initializable
                 departureCity.getItems().add(result.getString("name"));
             }
             
-                  departureCity.hide();
-                  departureCity.setVisibleRowCount(Math.min(10 , departureCity.getItems().size()));
-                  departureCity.show();
+            departureCity.hide();
+            departureCity.setVisibleRowCount(Math.min(10 , departureCity.getItems().size()));
+            departureCity.show();
             
         } catch (SQLException e) {
             e.printStackTrace();
@@ -331,9 +339,9 @@ public class AfterloginmainController implements Initializable
                 arrivalCity.getItems().add(result.getString("name"));
             }
             
-                  arrivalCity.hide();
-                  arrivalCity.setVisibleRowCount(Math.min(10 , arrivalCity.getItems().size()));
-                  arrivalCity.show();
+            arrivalCity.hide();
+            arrivalCity.setVisibleRowCount(Math.min(10 , arrivalCity.getItems().size()));
+            arrivalCity.show();
             
         } catch (SQLException e) {
             e.printStackTrace();
@@ -364,9 +372,9 @@ public class AfterloginmainController implements Initializable
                 departureAirport.getItems().add(result.getString("name"));
             }
             
-              departureAirport.hide();
-              departureAirport.setVisibleRowCount(Math.min(10 , departureAirport.getItems().size()));
-              departureAirport.show();
+            departureAirport.hide();
+            departureAirport.setVisibleRowCount(Math.min(10 , departureAirport.getItems().size()));
+            departureAirport.show();
             
         } catch (SQLException e) {
             e.printStackTrace();
@@ -399,9 +407,10 @@ public class AfterloginmainController implements Initializable
                 arrivalAirport.getItems().add(result.getString("name"));
                 //i++;
             }
-                arrivalAirport.hide();
-                arrivalAirport.setVisibleRowCount(Math.min(10 , arrivalAirport.getItems().size()));
-                arrivalAirport.show();
+            
+            arrivalAirport.hide();
+            arrivalAirport.setVisibleRowCount(Math.min(10 , arrivalAirport.getItems().size()));
+            arrivalAirport.show();
             
         } catch (SQLException e) {
             e.printStackTrace();
@@ -430,9 +439,9 @@ public class AfterloginmainController implements Initializable
                 holidayCity.getItems().add(result.getString("name"));
             }
             
-                  holidayCity.hide();
-                  holidayCity.setVisibleRowCount(Math.min(10 , holidayCity.getItems().size()));
-                  holidayCity.show();
+            holidayCity.hide();
+            holidayCity.setVisibleRowCount(Math.min(10 , holidayCity.getItems().size()));
+            holidayCity.show();
             
         } catch (SQLException e) {
             e.printStackTrace();
@@ -461,9 +470,9 @@ public class AfterloginmainController implements Initializable
                 hotel.getItems().add(result.getString("name"));
             }
             
-                  hotel.hide();
-                  hotel.setVisibleRowCount(Math.min(10 , hotel.getItems().size()));
-                  hotel.show();
+            hotel.hide();
+            hotel.setVisibleRowCount(Math.min(10 , hotel.getItems().size()));
+            hotel.show();
             
         } catch (SQLException e) {
             e.printStackTrace();
@@ -492,9 +501,9 @@ public class AfterloginmainController implements Initializable
                 citiesVisit.getItems().add(result.getString("name"));
             }
             
-                 citiesVisit.hide();
-                 citiesVisit.setVisibleRowCount(Math.min(10 , citiesVisit.getItems().size()));
-                 citiesVisit.show();
+            citiesVisit.hide();
+            citiesVisit.setVisibleRowCount(Math.min(10 , citiesVisit.getItems().size()));
+            citiesVisit.show();
             
         } catch (SQLException e) {
             e.printStackTrace();
@@ -511,6 +520,11 @@ public class AfterloginmainController implements Initializable
 
     @FXML
     private void classSeat(MouseEvent event) {
+    }
+    
+    public void transmitUserInfo(UserInfo userInfo) {
+        this.userInfo = userInfo;
+        username.setText(userInfo.getFname());
     }
 }
     

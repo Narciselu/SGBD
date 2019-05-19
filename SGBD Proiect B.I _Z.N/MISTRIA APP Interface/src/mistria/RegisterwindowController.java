@@ -5,6 +5,7 @@
  */
 package mistria;
 
+import com.sun.glass.ui.Cursor;
 import java.math.BigInteger;
 import java.net.URL;
 import java.security.MessageDigest;
@@ -20,6 +21,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -44,6 +46,8 @@ public class RegisterwindowController implements Initializable
     private PasswordField password;
     
     private Connection con;
+    @FXML
+    private Button createAccount;
 
     /**
      * Initializes the controller class.
@@ -80,7 +84,7 @@ public class RegisterwindowController implements Initializable
         String fname = this.firstName.getText();
         String lname = this.lastName.getText();
         String email = this.email.getText();
-        String password = hashPassword(this.password.getText());
+        String password = this.password.getText();
         
 //        System.out.println("mistria.RegisterwindowController.createAcc(): " + password);
         
@@ -96,6 +100,8 @@ public class RegisterwindowController implements Initializable
             return;
         }
         
+        password = hashPassword(password);
+        
         try {
             PreparedStatement prepStmt = con.prepareStatement("insert into customers(email, first_name, last_name, password) values(?, ?, ?, ?)");
             prepStmt.setString(1, email);
@@ -103,9 +109,17 @@ public class RegisterwindowController implements Initializable
             prepStmt.setString(3, lname);
             prepStmt.setString(4, password);
             prepStmt.executeUpdate();
+            
+            createAccount.getScene().getWindow().hide();
+            Alert alert = new Alert(AlertType.INFORMATION, "User registered sucessfully", ButtonType.OK);
+            alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
+            alert.show();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
+            showError(ex.getMessage());
         }
+        
+        //todo print message: user registered successfully
     }
     
     private String hashPassword(String password) {
@@ -123,8 +137,8 @@ public class RegisterwindowController implements Initializable
     
     private void showError(String err){
         Alert alert = new Alert(AlertType.ERROR, err, ButtonType.OK);
-            alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
-            alert.show();
+        alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
+        alert.show();
     }
     
 }

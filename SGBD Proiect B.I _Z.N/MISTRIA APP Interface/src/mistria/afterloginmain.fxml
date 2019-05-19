@@ -38,7 +38,7 @@
                   <Font name="Comic Sans MS Bold" size="40.0" />
                </font>
             </Text>
-            <Text layoutX="314.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username">
+            <Text fx:id="username" layoutX="314.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username">
                <font>
                   <Font size="40.0" />
                </font>

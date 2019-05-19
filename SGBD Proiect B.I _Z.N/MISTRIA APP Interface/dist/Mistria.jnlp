@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="Mistria.jar" size="17136" download="eager" />
+    <jar href="Mistria.jar" size="18860" download="eager" />
     <jar href="lib/ojdbc7.jar" size="3397734" download="eager" />
   </resources>
   <jfx:javafx-desc  width="800" height="600" main-class="mistria.Mistria"  name="Mistria" />
