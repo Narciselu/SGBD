@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.DatePicker?>
-<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Spinner?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
@@ -16,18 +16,13 @@
             <Font size="30.0" />
          </font>
       </Text>
-      <Text layoutX="73.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select date of last trips" />
+      <Text layoutX="100.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select last trips" />
       <Text layoutX="51.0" layoutY="199.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rate your selected trip">
          <font>
             <Font size="20.0" />
          </font>
       </Text>
       <Text layoutX="132.0" layoutY="237.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hotel" />
-      <RadioButton layoutX="90.0" layoutY="242.0" mnemonicParsing="false" text="2" />
-      <RadioButton layoutX="46.0" layoutY="242.0" mnemonicParsing="false" text="1" />
-      <RadioButton layoutX="214.0" layoutY="242.0" mnemonicParsing="false" text="5" />
-      <RadioButton layoutX="174.0" layoutY="242.0" mnemonicParsing="false" text="4" />
-      <RadioButton layoutX="131.0" layoutY="242.0" mnemonicParsing="false" text="3" />
       <Text layoutX="99.0" layoutY="320.0" strokeType="OUTSIDE" strokeWidth="0.0" text="City you visited" />
       <Text layoutX="98.0" layoutY="405.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Flight company" />
       <Button layoutX="105.0" layoutY="475.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="90.0" style="-fx-background-color: #404040; -fx-text-fill: #f0f0f0;" text="Confirm">
@@ -35,16 +30,9 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <RadioButton layoutX="91.0" layoutY="325.0" mnemonicParsing="false" text="2" />
-      <RadioButton layoutX="47.0" layoutY="325.0" mnemonicParsing="false" text="1" />
-      <RadioButton layoutX="215.0" layoutY="325.0" mnemonicParsing="false" text="5" />
-      <RadioButton layoutX="175.0" layoutY="325.0" mnemonicParsing="false" text="4" />
-      <RadioButton layoutX="132.0" layoutY="325.0" mnemonicParsing="false" text="3" />
-      <RadioButton layoutX="91.0" layoutY="410.0" mnemonicParsing="false" text="2" />
-      <RadioButton layoutX="47.0" layoutY="410.0" mnemonicParsing="false" text="1" />
-      <RadioButton layoutX="215.0" layoutY="410.0" mnemonicParsing="false" text="5" />
-      <RadioButton layoutX="175.0" layoutY="410.0" mnemonicParsing="false" text="4" />
-      <RadioButton layoutX="132.0" layoutY="410.0" mnemonicParsing="false" text="3" />
-      <DatePicker layoutX="39.0" layoutY="101.0" />
+      <Spinner fx:id="rateHotel" layoutX="112.0" layoutY="242.0" onMouseClicked="#rateHotel" prefHeight="31.0" prefWidth="77.0" />
+      <Spinner fx:id="rateCity" layoutX="112.0" layoutY="325.0" onMouseClicked="#rateCity" prefHeight="31.0" prefWidth="77.0" />
+      <Spinner fx:id="rateFlight" layoutX="112.0" layoutY="410.0" onMouseClicked="#rateFlight" prefHeight="31.0" prefWidth="77.0" />
+      <ComboBox fx:id="lastTrip" layoutX="59.0" layoutY="101.0" onMouseClicked="#lastTrip" prefHeight="31.0" prefWidth="183.0" />
    </children>
 </Pane>
