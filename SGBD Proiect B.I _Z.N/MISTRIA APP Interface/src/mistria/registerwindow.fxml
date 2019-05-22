@@ -41,7 +41,7 @@
                   <Font name="Century Gothic Bold Italic" size="40.0" />
                </font>
             </Text>
-            <Button fx:id="createAccount" layoutX="310.0" layoutY="249.0" mnemonicParsing="false" onMouseClicked="#createAcc" text="Create Account">
+            <Button layoutX="310.0" layoutY="249.0" mnemonicParsing="false" onAction="#createAcc" text="Create Account">
                <font>
                   <Font name="Comic Sans MS Bold" size="20.0" />
                </font>

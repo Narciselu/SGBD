@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -23,12 +24,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.ListView;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javax.swing.SpinnerNumberModel;
 
@@ -38,17 +39,13 @@ import javax.swing.SpinnerNumberModel;
  * @author narci
  */
 public class AfterloginmainController implements Initializable 
+
 {
 
     @FXML
-    private Text username;
-       
-    private UserInfo userInfo;
-    
-    private Connection con;
-    
-    @FXML
+
     private BorderPane borderpane1;
+    private Connection con;
     @FXML
     private ComboBox<String> departureContinent;
     @FXML
@@ -75,12 +72,16 @@ public class AfterloginmainController implements Initializable
     private Spinner<Integer> nrPersons;
     @FXML
     private Spinner<Integer> classSeat;
+    @FXML
+    private ListView<String> flightList;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+        
         //Spinner nrPersons
         SpinnerValueFactory<Integer> gradesValueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1,100,1);
         this.nrPersons.setValueFactory(gradesValueFactory);
@@ -174,7 +175,7 @@ public class AfterloginmainController implements Initializable
         departureContinent.getItems().clear();
         
         Statement statement;
-        String query = "select c.name as name from continents c order by c.name";
+        String query = "select * from continents order by name";
         
 
         try {
@@ -185,9 +186,9 @@ public class AfterloginmainController implements Initializable
                 departureContinent.getItems().add(result.getString("name"));
             }
             
-            departureContinent.hide();
-            departureContinent.setVisibleRowCount(Math.min(10 , departureContinent.getItems().size()));
-            departureContinent.show();
+                  departureContinent.hide();
+                  departureContinent.setVisibleRowCount(Math.min(10 , departureContinent.getItems().size()));
+                  departureContinent.show();
             
         } catch (SQLException e) {
             e.printStackTrace();
@@ -203,7 +204,7 @@ public class AfterloginmainController implements Initializable
         arrivalContinent.getItems().clear();
         
         Statement statement;
-        String query = "select c.name as name from continents c order by c.name";
+        String query = "select * from continents order by name";
         
 
         try {
@@ -214,9 +215,9 @@ public class AfterloginmainController implements Initializable
                 arrivalContinent.getItems().add(result.getString("name"));
             }
             
-            arrivalContinent.hide();
-            arrivalContinent.setVisibleRowCount(Math.min(10 , arrivalContinent.getItems().size()));
-            arrivalContinent.show();
+                  arrivalContinent.hide();
+                  arrivalContinent.setVisibleRowCount(Math.min(10 , arrivalContinent.getItems().size()));
+                  arrivalContinent.show();
             
         } catch (SQLException e) {
             e.printStackTrace();
@@ -228,13 +229,13 @@ public class AfterloginmainController implements Initializable
     private void departureCountry(MouseEvent event) 
     {
         
-        departureCountry.getItems().clear();
+         departureCountry.getItems().clear();
         
-        if(departureContinent.getSelectionModel().getSelectedItem()== null)
+         if(departureContinent.getSelectionModel().getSelectedItem()== null)
              return;
-        
+         
         Statement statement;
-        String query = "select c.name as name from countries c where c.continent = \'" + departureContinent.getSelectionModel().getSelectedItem() + "\' order by name";
+        String query = "select * from countries where continent = \'" + departureContinent.getSelectionModel().getSelectedItem() + "\' order by name";
         
        // System.out.println (query);
 
@@ -246,9 +247,9 @@ public class AfterloginmainController implements Initializable
                 departureCountry.getItems().add(result.getString("name"));
             }
             
-            departureCountry.hide();
-            departureCountry.setVisibleRowCount(Math.min(10 , departureCountry.getItems().size()));
-            departureCountry.show();
+                  departureCountry.hide();
+                  departureCountry.setVisibleRowCount(Math.min(10 , departureCountry.getItems().size()));
+                  departureCountry.show();
             
         } catch (SQLException e) {
             e.printStackTrace();
@@ -265,7 +266,7 @@ public class AfterloginmainController implements Initializable
              return;
         
         Statement statement;
-        String query = "select c.name as name from countries c where c.continent = \'" + arrivalContinent.getSelectionModel().getSelectedItem() + "\' order by name";
+        String query = "select * from countries where continent = \'" + arrivalContinent.getSelectionModel().getSelectedItem() + "\' order by name";
         
         //System.out.println (query);
 
@@ -277,9 +278,9 @@ public class AfterloginmainController implements Initializable
                 arrivalCountry.getItems().add(result.getString("name"));
             }
             
-            arrivalCountry.hide();
-            arrivalCountry.setVisibleRowCount(Math.min(10 , arrivalCountry.getItems().size()));
-            arrivalCountry.show();
+                  arrivalCountry.hide();
+                  arrivalCountry.setVisibleRowCount(Math.min(10 , arrivalCountry.getItems().size()));
+                  arrivalCountry.show();
             
         } catch (SQLException e) {
             e.printStackTrace();
@@ -296,7 +297,7 @@ public class AfterloginmainController implements Initializable
              return;
         
         Statement statement;
-        String query = "select distinct c.name as name from cities c join airports a on c.name = a.city where c.country = \'" + departureCountry.getSelectionModel().getSelectedItem() + "\' order by c.name";
+        String query = "select distinct c.name as name from cities c join airports a on c.name = a.city where country = \'" + departureCountry.getSelectionModel().getSelectedItem() + "\' order by name";
         
        // System.out.println (query);
 
@@ -308,9 +309,9 @@ public class AfterloginmainController implements Initializable
                 departureCity.getItems().add(result.getString("name"));
             }
             
-            departureCity.hide();
-            departureCity.setVisibleRowCount(Math.min(10 , departureCity.getItems().size()));
-            departureCity.show();
+                  departureCity.hide();
+                  departureCity.setVisibleRowCount(Math.min(10 , departureCity.getItems().size()));
+                  departureCity.show();
             
         } catch (SQLException e) {
             e.printStackTrace();
@@ -339,9 +340,9 @@ public class AfterloginmainController implements Initializable
                 arrivalCity.getItems().add(result.getString("name"));
             }
             
-            arrivalCity.hide();
-            arrivalCity.setVisibleRowCount(Math.min(10 , arrivalCity.getItems().size()));
-            arrivalCity.show();
+                  arrivalCity.hide();
+                  arrivalCity.setVisibleRowCount(Math.min(10 , arrivalCity.getItems().size()));
+                  arrivalCity.show();
             
         } catch (SQLException e) {
             e.printStackTrace();
@@ -357,24 +358,24 @@ public class AfterloginmainController implements Initializable
         if(departureCity.getSelectionModel().getSelectedItem()== null)
              return;
         
-        System.out.println(departureAirport.getVisibleRowCount());
-        
         Statement statement;
-        String query = "select a.name as name from airports a where a.city = \'" + departureCity.getSelectionModel().getSelectedItem() + "\' order by name";
+        String query = "select * from airports where city = \'" + departureCity.getSelectionModel().getSelectedItem() + "\' order by name";
         
         //System.out.println (query);
 
         try {
             statement = con.createStatement();
             ResultSet result = statement.executeQuery(query);
+            //int i = 0;
             while(result.next()) {
                 //System.out.println(result.getString("name"));
                 departureAirport.getItems().add(result.getString("name"));
+                //i++;
             }
             
-            departureAirport.hide();
-            departureAirport.setVisibleRowCount(Math.min(10 , departureAirport.getItems().size()));
-            departureAirport.show();
+                  departureAirport.hide();
+                  departureAirport.setVisibleRowCount(Math.min(10 , departureAirport.getItems().size()));
+                  departureAirport.show();
             
         } catch (SQLException e) {
             e.printStackTrace();
@@ -394,7 +395,7 @@ public class AfterloginmainController implements Initializable
              return;
         
         Statement statement;
-        String query = "select a.name as name from airports a where a.city = \'" + arrivalCity.getSelectionModel().getSelectedItem() + "\' order by name";
+        String query = "select * from airports where city = \'" + arrivalCity.getSelectionModel().getSelectedItem() + "\' order by name";
         
         //System.out.println (query);
 
@@ -407,10 +408,9 @@ public class AfterloginmainController implements Initializable
                 arrivalAirport.getItems().add(result.getString("name"));
                 //i++;
             }
-            
-            arrivalAirport.hide();
-            arrivalAirport.setVisibleRowCount(Math.min(10 , arrivalAirport.getItems().size()));
-            arrivalAirport.show();
+                arrivalAirport.hide();
+                arrivalAirport.setVisibleRowCount(Math.min(10 , arrivalAirport.getItems().size()));
+                arrivalAirport.show();
             
         } catch (SQLException e) {
             e.printStackTrace();
@@ -427,7 +427,7 @@ public class AfterloginmainController implements Initializable
              return;
         
         Statement statement;
-        String query = "select c.name as name from cities c where c.country = \'" + arrivalCountry.getSelectionModel().getSelectedItem() + "\' order by name";
+        String query = "select * from cities where country = \'" + arrivalCountry.getSelectionModel().getSelectedItem() + "\' order by name";
         
        // System.out.println (query);
 
@@ -439,9 +439,9 @@ public class AfterloginmainController implements Initializable
                 holidayCity.getItems().add(result.getString("name"));
             }
             
-            holidayCity.hide();
-            holidayCity.setVisibleRowCount(Math.min(10 , holidayCity.getItems().size()));
-            holidayCity.show();
+                  holidayCity.hide();
+                  holidayCity.setVisibleRowCount(Math.min(10 , holidayCity.getItems().size()));
+                  holidayCity.show();
             
         } catch (SQLException e) {
             e.printStackTrace();
@@ -458,7 +458,7 @@ public class AfterloginmainController implements Initializable
              return;
         
         Statement statement;
-        String query = "select h.name as name from hotels h where h.country = \'" + holidayCity.getSelectionModel().getSelectedItem() + "\' order by name";
+        String query = "select * from hotels where country = \'" + holidayCity.getSelectionModel().getSelectedItem() + "\' order by name";
         
         //System.out.println (query);
 
@@ -470,9 +470,9 @@ public class AfterloginmainController implements Initializable
                 hotel.getItems().add(result.getString("name"));
             }
             
-            hotel.hide();
-            hotel.setVisibleRowCount(Math.min(10 , hotel.getItems().size()));
-            hotel.show();
+                  hotel.hide();
+                  hotel.setVisibleRowCount(Math.min(10 , hotel.getItems().size()));
+                  hotel.show();
             
         } catch (SQLException e) {
             e.printStackTrace();
@@ -489,7 +489,7 @@ public class AfterloginmainController implements Initializable
              return;
         
         Statement statement;
-        String query = "select c.name as name from cities c where c.country = \'" + arrivalCountry.getSelectionModel().getSelectedItem() + "\' order by name";
+        String query = "select * from cities where country = \'" + arrivalCountry.getSelectionModel().getSelectedItem() + "\' order by name";
         
         //System.out.println (query);
 
@@ -501,9 +501,9 @@ public class AfterloginmainController implements Initializable
                 citiesVisit.getItems().add(result.getString("name"));
             }
             
-            citiesVisit.hide();
-            citiesVisit.setVisibleRowCount(Math.min(10 , citiesVisit.getItems().size()));
-            citiesVisit.show();
+                 citiesVisit.hide();
+                 citiesVisit.setVisibleRowCount(Math.min(10 , citiesVisit.getItems().size()));
+                 citiesVisit.show();
             
         } catch (SQLException e) {
             e.printStackTrace();
@@ -521,10 +521,58 @@ public class AfterloginmainController implements Initializable
     @FXML
     private void classSeat(MouseEvent event) {
     }
-    
-    public void transmitUserInfo(UserInfo userInfo) {
-        this.userInfo = userInfo;
-        username.setText(userInfo.getFname());
+
+    @FXML
+    private void submitEvent(MouseEvent event) 
+    {
+        flightList.getItems().clear();
+        if(departureContinent.getSelectionModel().getSelectedItem() == null || departureCountry.getSelectionModel().getSelectedItem() == null || 
+           departureCity.getSelectionModel().getSelectedItem() == null || departureAirport.getSelectionModel().getSelectedItem() == null  ||
+           arrivalContinent.getSelectionModel().getSelectedItem() == null || arrivalCountry.getSelectionModel().getSelectedItem() == null ||
+           arrivalCity.getSelectionModel().getSelectedItem() == null || arrivalAirport.getSelectionModel().getSelectedItem() == null ||
+           holidayCity.getSelectionModel().getSelectedItem() == null || hotel.getSelectionModel().getSelectedItem() == null )
+            return;
+            
+        flightList.getItems().add("Departure Continent:       " + departureContinent.getSelectionModel().getSelectedItem());
+        flightList.getItems().add("Departure Country:       " + departureCountry.getSelectionModel().getSelectedItem());
+        flightList.getItems().add("Departure City:       " + departureCity.getSelectionModel().getSelectedItem());
+        flightList.getItems().add("Departure Airport:       " + departureAirport.getSelectionModel().getSelectedItem());
+        flightList.getItems().add("Arrival Continent:       " + arrivalContinent.getSelectionModel().getSelectedItem());
+        flightList.getItems().add("Arrival Country:       " + arrivalCountry.getSelectionModel().getSelectedItem());
+        flightList.getItems().add("Arrival City:       " + arrivalCity.getSelectionModel().getSelectedItem());
+        flightList.getItems().add("Arrival Airport:       " + arrivalAirport.getSelectionModel().getSelectedItem());
+        flightList.getItems().add("Holiday City:       " + holidayCity.getSelectionModel().getSelectedItem());
+        flightList.getItems().add("Hotel:       " + hotel.getSelectionModel().getSelectedItem());
+         if(citiesVisit.getSelectionModel().getSelectedItem() != null)
+        flightList.getItems().add("Extra city:       " + citiesVisit.getSelectionModel().getSelectedItem());
+        
+         
+        try { 
+            String airport1 = "" , airport2 = "";
+            PreparedStatement acode = con.prepareStatement("select code from airports where name = :a");
+            acode.setString(1, departureAirport.getSelectionModel().getSelectedItem());
+            ResultSet result = acode.executeQuery();
+            if(result.next())
+                airport1 = result.getString(1);
+                      
+            acode.setString(1, arrivalAirport.getSelectionModel().getSelectedItem());
+            ResultSet result2 = acode.executeQuery();
+            if(result2.next())
+                airport1 = result2.getString(1);
+            
+            PreparedStatement astar = con.prepareStatement("select get_flight(:a,:b) from dual");
+            astar.setString(1, airport1);
+            astar.setString(2, airport2);
+            ResultSet result1 = astar.executeQuery();
+            
+            if (result1.next())
+                System.out.println(result1.getString(1));
+                
+        } catch (SQLException ex) {
+            Logger.getLogger(AfterloginmainController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
     }
 }
     
